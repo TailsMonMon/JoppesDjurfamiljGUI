@@ -1,7 +1,7 @@
 ﻿
 
 namespace JoppesDjurfamiljGUI {
-    class Ball {
+    public class Ball {
         private string color = "";
         private string texture = "";
         private int size = 6;

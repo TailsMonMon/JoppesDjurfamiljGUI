@@ -117,4 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBoxRead.Text" xml:space="preserve">
+    <value>This is about Joppe and his family of pets. 
+To interact with the pets Joppe can play with them or feed them. There are several dishes to choose from and also several kinds of balls. 
+Of course, the animals will react different depending on what is offered.
+
+</value>
+  </data>
 </root>

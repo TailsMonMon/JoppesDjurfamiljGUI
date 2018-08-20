@@ -56,7 +56,25 @@ namespace JoppesDjurfamiljGUI {
                     petIndex++;
                 }
             }
+
+            MakeFoodList();
         }
+
+        private void MakeFoodList() {
+            foreach(Animal pet in pets) {
+                bool isEqual = true;
+                foreach(string food in foods) {
+                    if(food == pet.favFood) {
+                        isEqual = false;
+                    }
+                }
+                if(isEqual) {
+                    foods.Add(pet.FavFood);
+                }
+            }
+        }
+        
+
 
         private void LogStatus() {
             stream.Log($"<{className}> Begins status update to file, " + stream.StatusFile);
@@ -73,7 +91,7 @@ namespace JoppesDjurfamiljGUI {
             stream.SaveStatus(updateData);
             stream.Log($"<{className}> Status update was successful");
         }
-        
+
         // TODO: Make method to play fetch.
     }
 }

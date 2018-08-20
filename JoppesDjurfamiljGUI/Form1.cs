@@ -20,9 +20,10 @@ namespace JoppesDjurfamiljGUI {
             comboBoxBalls.DisplayMember = "Color" + "Texture";
             comboBoxBalls.DataSource = petowner.balls;
 
-            //comboBoxFoods.ValueMember = "Food";
-            comboBoxFoods.DisplayMember = "Name";
+            
+            comboBoxFoods.DisplayMember = "food"; //BUG: Not working, can't figure out why. Yet.
             comboBoxFoods.DataSource = petowner.foods;
+            
         }
 
         private void buttonListPets_Click(object sender, EventArgs e) {
@@ -35,18 +36,6 @@ namespace JoppesDjurfamiljGUI {
 
         private void buttonListFoods_Click(object sender, EventArgs e) {
             richTextBoxRead.Clear();
-            // Load foodlist
-            foreach(Animal pet in petowner.pets) {
-                bool isEqual = true;
-                foreach(string food in petowner.foods) {
-                    if(food == pet.favFood) {
-                        isEqual = false;
-                    }
-                }
-                if(isEqual) {
-                    petowner.foods.Add(pet.FavFood);
-                }
-            }
             // Load text to write
             foreach(string food in petowner.foods) {
                 StringBuilder petsFavFood = new StringBuilder();
@@ -75,7 +64,7 @@ namespace JoppesDjurfamiljGUI {
             richTextBoxRead.Clear();
             richTextBoxRead.AppendText("This is about Joppe and his family of pets.");
             richTextBoxRead.AppendText(Environment.NewLine);
-            richTextBoxRead.AppendText("To interact with the pets Joppe can play with them or feed them.There are several dishes to choose from and also several different kinds of balls.");
+            richTextBoxRead.AppendText("To interact with the pets Joppe can play with them or feed them. There are several dishes to choose from and also several kinds of balls.");
             richTextBoxRead.AppendText(Environment.NewLine);
             richTextBoxRead.AppendText("Of course, the animals will react different depending on what is offered. ");
             richTextBoxRead.AppendText(Environment.NewLine);
@@ -87,29 +76,35 @@ namespace JoppesDjurfamiljGUI {
             comboBoxBalls.Visible = false;
         }
 
-        private void buttonOk_Click(object sender, EventArgs e) {
-            int petIndex = comboBoxPets.SelectedIndex;
-            int foodIndex = comboBoxFoods.SelectedIndex;
-            int ballIndex = comboBoxBalls.SelectedIndex;
-
-            comboBoxPets.Visible = false;
-            comboBoxFoods.Visible = false;
-            comboBoxBalls.Visible = false;
-
-            richTextBoxRead.Clear();
-            if(ballIndex != null) {
-                richTextBoxRead.AppendText($"Joppe wants to play with {petowner.pets[petIndex].Name} using a {petowner.balls[petIndex].Color} {petowner.balls[petIndex].Texture} ball.");
-                // TODO: Call method to play fetch
-            }
-
-            //richTextBoxRead.Clear();
-            //richTextBoxRead.Text = $"Joppe is going to feed {petowner.foods[foodIndex]} to {petowner.pets[petIndex].Name}";
-        }
-
         private void buttonPlayFetch_Click(object sender, EventArgs e) {
             comboBoxPets.Visible = true;
             comboBoxBalls.Visible = true;
             comboBoxFoods.Visible = false;
         }
+
+        private void buttonOk_Click(object sender, EventArgs e) {
+            int petIndex = comboBoxPets.SelectedIndex;
+            int foodIndex = comboBoxFoods.SelectedIndex;
+            int ballIndex = comboBoxBalls.SelectedIndex;
+            
+            richTextBoxRead.Clear();
+
+            if(comboBoxBalls.Visible) {
+                richTextBoxRead.AppendText($"Joppe wants to play with {petowner.pets[petIndex].Name} using a {petowner.balls[ballIndex].Color} {petowner.balls[ballIndex].Texture} ball.");
+                string interact = petowner.pets[petIndex].Interact(petowner.balls[ballIndex]);
+                richTextBoxRead.AppendText(interact);
+            }
+            else if(comboBoxFoods.Visible) {
+                richTextBoxRead.Text = $"Joppe is going to feed {petowner.foods[foodIndex]} to {petowner.pets[petIndex].Name}";
+                string feed = petowner.pets[petIndex].Eat(petowner.foods[foodIndex]);
+                richTextBoxRead.AppendText(feed);
+
+            }
+
+            comboBoxPets.Visible = false;
+            comboBoxFoods.Visible = false;
+            comboBoxBalls.Visible = false;
+        }
+        
     }
 }

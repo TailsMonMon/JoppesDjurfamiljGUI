@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace JoppesDjurfamiljGUI {
-    abstract class Animal {
+    public abstract class Animal{
         // Defining data
         internal Random random = new Random();
         internal Stream stream = new Stream();
@@ -10,7 +10,7 @@ namespace JoppesDjurfamiljGUI {
         internal string name = "";
         internal string favFood = "";
         internal string breed = "";
-        internal bool hungry = true;
+        internal bool hungry = false;
 
         public int Age {
             get { return age; }
@@ -44,22 +44,23 @@ namespace JoppesDjurfamiljGUI {
             this.breed = _breed;
         }
 
-        public abstract void Interact(Ball ball);
+        public abstract string Interact(Ball ball);
 
-        public abstract void HungryAnimal();
+        public abstract string HungryAnimal();
 
-        public void Eat(string food) {
+        public string Eat(string food) {
             if(!Hungry) {
-                //Console.WriteLine(Name + " is not hungry");
+                return (Name + " is not hungry");
             }
             else {
 
                 if(food == FavFood) {
-                    //Console.WriteLine(Name + " eats hungrily"); 
                     Hungry = false;
+                    return (Name + " eats hungrily"); 
                 }
                 else {
                     HungryAnimal();
+                    return (Name + " whimpers. \n");
                 }
 
             }

@@ -1,5 +1,5 @@
 ﻿namespace JoppesDjurfamiljGUI {
-    partial class Form1 {
+    public partial class Form1 {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonListPets = new System.Windows.Forms.Button();
             this.buttonPlayFetch = new System.Windows.Forms.Button();
             this.buttonFeedPet = new System.Windows.Forms.Button();
@@ -33,8 +34,8 @@
             this.buttonListBalls = new System.Windows.Forms.Button();
             this.comboBoxPets = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.comboBoxFoods = new System.Windows.Forms.ComboBox();
             this.comboBoxBalls = new System.Windows.Forms.ComboBox();
+            this.comboBoxFoods = new System.Windows.Forms.ComboBox();
             this.buttonOk = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -98,9 +99,9 @@
             this.richTextBoxRead.Location = new System.Drawing.Point(93, 92);
             this.richTextBoxRead.Name = "richTextBoxRead";
             this.richTextBoxRead.ReadOnly = true;
-            this.richTextBoxRead.Size = new System.Drawing.Size(357, 156);
+            this.richTextBoxRead.Size = new System.Drawing.Size(338, 156);
             this.richTextBoxRead.TabIndex = 10;
-            this.richTextBoxRead.Text = "";
+            this.richTextBoxRead.Text = resources.GetString("richTextBoxRead.Text");
             // 
             // buttonListFoods
             // 
@@ -140,34 +141,34 @@
             this.flowLayoutPanel1.Controls.Add(this.comboBoxFoods);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(93, 52);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(320, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(288, 34);
             this.flowLayoutPanel1.TabIndex = 17;
-            // 
-            // comboBoxFoods
-            // 
-            this.comboBoxFoods.FormattingEnabled = true;
-            this.comboBoxFoods.Location = new System.Drawing.Point(3, 30);
-            this.comboBoxFoods.Name = "comboBoxFoods";
-            this.comboBoxFoods.Size = new System.Drawing.Size(178, 21);
-            this.comboBoxFoods.TabIndex = 17;
-            this.comboBoxFoods.Text = "Choose a food";
-            this.comboBoxFoods.Visible = false;
             // 
             // comboBoxBalls
             // 
             this.comboBoxBalls.FormattingEnabled = true;
             this.comboBoxBalls.Location = new System.Drawing.Point(164, 3);
             this.comboBoxBalls.Name = "comboBoxBalls";
-            this.comboBoxBalls.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxBalls.Size = new System.Drawing.Size(114, 21);
             this.comboBoxBalls.TabIndex = 18;
             this.comboBoxBalls.Text = "Choose a ball";
             this.comboBoxBalls.Visible = false;
             // 
+            // comboBoxFoods
+            // 
+            this.comboBoxFoods.FormattingEnabled = true;
+            this.comboBoxFoods.Location = new System.Drawing.Point(3, 30);
+            this.comboBoxFoods.Name = "comboBoxFoods";
+            this.comboBoxFoods.Size = new System.Drawing.Size(114, 21);
+            this.comboBoxFoods.TabIndex = 17;
+            this.comboBoxFoods.Text = "Choose a food";
+            this.comboBoxFoods.Visible = false;
+            // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(419, 52);
+            this.buttonOk.Location = new System.Drawing.Point(387, 52);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(34, 34);
+            this.buttonOk.Size = new System.Drawing.Size(44, 34);
             this.buttonOk.TabIndex = 18;
             this.buttonOk.Text = "Ok";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -177,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 400);
+            this.ClientSize = new System.Drawing.Size(437, 253);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonListBalls);
             this.Controls.Add(this.buttonListFoods);
